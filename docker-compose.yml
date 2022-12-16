@@ -1,0 +1,15 @@
+version: "3"
+services:
+  certbot:
+    image: certbot:v1.7.0
+    build: ./
+    container_name: 'certbot1'
+    stdin_open: true
+    tty: true
+    working_dir: '/etc/letsencrypt'
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./etc/letsencrypt:/etc/letsencrypt
+    entrypoint: '/bin/sh'
